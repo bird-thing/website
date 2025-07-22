@@ -15,15 +15,24 @@ body {
 
 }
 
-ul{
+#buttons ul{
+	margin: 0;
+	padding: 0;
 	list-style-type: none;
 	
 }
-li{
-	border-style:solid;
-	border-color:#0A2239;
-	border-width: 2px;
+#buttons li{
+	margin: 0;
+	padding: 0;
+	display: block;
 
+}
+#buttons li a{
+	border: 4px outset #0A2239;
+	background-color: #1D425B;
+	color: white;
+	text-decoration: none ;
+	display: block ;
 }
 header {
 	background-image: linear-gradient(90deg, #0A2239, #53A2BE);
@@ -105,3 +114,61 @@ max-width:800px;
 	}
 	
 }
+/*not my css*/
+.rainbow-text {
+	background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+  }
+  .rainbow-text-loop {
+	font-size: 1.5rem;
+	display: inline-block;
+	margin-top: 1rem;
+	text-shadow: 2px 2px 4px #000000;
+	-webkit-animation: rainbow 5s infinite; 
+	animation: rainbow 5s infinite;
+  }
+  
+  @-webkit-keyframes rainbow{
+	0%{color: orange;}  
+	10%{color: purple;} 
+	20%{color: red;}
+	30%{color: CadetBlue;}
+	40%{color: yellow;}
+	50%{color: coral;}
+	60%{color: green;}
+	70%{color: cyan;}
+	80%{color: DeepPink;}
+	90%{color: DodgerBlue;}
+	100%{color: orange;}
+  }
+  @keyframes rainbow{
+	0%{color: orange;}  
+	10%{color: purple;} 
+	20%{color: red;}
+	30%{color: CadetBlue;}
+	40%{color: yellow;}
+	50%{color: coral;}
+	60%{color: green;}
+	70%{color: cyan;}
+	80%{color: DeepPink;}
+	90%{color: DodgerBlue;}
+	100%{color: orange;}
+  }
+  /*source: https://unused-css.com/blog/css-rainbow-text/*/
+  /*back to my stuff*/
+  div#info{
+	text-align: start;
+	margin-left: 25%;
+	margin-right: 25%;
+	line-height: 25px;
+  }
+  #info ul{
+	list-style-image: url(assets/starbullet.png);
+	
+  }
+  div#theor{
+	background-color:#0A2239;
+	padding: 10px;
+  }
