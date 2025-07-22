@@ -1,4 +1,3 @@
-
 html,
 body {
 	min-height: 100%;
@@ -6,41 +5,45 @@ body {
 
 body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	background-color:#0A2239;
+	background-color: #0A2239;
 	color: white;
 
 }
 
-#buttons ul{
+#buttons ul {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-	
+
 }
-#buttons li{
+
+#buttons li {
 	margin: 0;
 	padding: 0;
 	display: block;
 
 }
-#buttons li a{
+
+#buttons li a {
 	background-color: #1D425B;
 	color: white;
-	text-decoration: none ;
-	display: block ;
+	text-decoration: none;
+	display: block;
 }
-#buttons li a:hover{
-    background-color: #41829D;
+
+#buttons li a:hover {
+	background-color: #41829D;
 	color: white;
-	text-decoration: none ;
-	display: block ;
+	text-decoration: none;
+	display: block;
 }
+
 header {
 	background-color: #0A2239;
 	color: white;
 	padding: 5px;
 	top: 0px;
-	
+
 }
 
 img {
@@ -64,7 +67,7 @@ output {
 
 div#mainstuff {
 	justify-content: center;
-	display:flex;
+	display: flex;
 	text-align: center;
 	flex-direction: row;
 	box-sizing: border-box;
@@ -76,13 +79,13 @@ div#mainbox {
 	background-color: #1D425B;
 	color: white;
 	padding: 5px;
-	
+
 	box-sizing: border-box;
-	
+
 }
 
 div#side {
-	flex:50%;
+	flex: 50%;
 	background-color: #41829D;
 	color: #0A2239;
 	padding: 5px;
@@ -101,33 +104,37 @@ div#footer {
 	div#mainstuff {
 		flex-direction: column;
 	}
-	div#centerbox{
-		margin-left:auto;
-		margin-right:auto;
+
+	div#centerbox {
+		margin-left: auto;
+		margin-right: auto;
 		float: center;
-max-width:800px;
+		max-width: 800px;
 	}
-	div#side{
-		margin-left:auto;
-		margin-right:auto;
-		max-width:800px;
+
+	div#side {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 800px;
 		float: center;
 	}
-	
+
 }
-div#moneyhole{
-    background:#0A2239;
-    margin-left: 25%;
-    margin-right: 25%;
+
+div#moneyhole {
+	background: #0A2239;
+	margin-left: 25%;
+	margin-right: 25%;
 }
-button{
-    background:#1D425B;
-    color:white;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
+
+button {
+	background: #1D425B;
+	color: white;
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
 }
