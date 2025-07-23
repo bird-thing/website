@@ -1,25 +1,31 @@
+// BACKUP OF GAME.JS IN CASE THINGS GO DOWNHILL AS WE MODIFY IT FOR FUN BECAUSE THIS WAS FRUSTRATING
+// TO FIX IN SO MANY PLACES I WILL GO INSANE IF I HAVE TO REDO ALL THAT
+// ESPECIALLY THE STUPID SELECT MOVE PURPLE MAUVE MERGING INTO AN UNHOLY
+// PURPLEM AND THAT WAS AWFUL AND I FIXED IT SO IT BETTER STAY FIXED IN THIS BACKUP
+// IM ACTUALLY BACKING IT UP ON TO A LOCAL THING AND THEN EMAILING IT TO MYSELF
+// actually probably not i dont feel like doing that much
+
+
 let points = 0; // added points because its a game and winning is cool
 // thinking about how to implement the other boards, see further comments and notes
-let fontsize = 50 // this is the size of font, it will change
-const listOfBoards = ["board0", "board1", "board2"];
 const BOARDS = [
     {
         cells: [
-            ["A", "Y", "G", "E", "B"],
-            ["L", "E", "G", "A", "K"],
-            ["G", "W", "O", "N", "N"],
-            ["N", "I", "C", "T", "O"], 
-            ["F", "A", "L", "A", "L"]],
-        words: ["BEAK", "LAYEGG", "FALCON", "TALON", "WING"]
+            ["E", "L", "W", "Y", "C"],
+            ["Y", "L", "O", "A", "N"],
+            ["E", "B", "L", "E", "E"],
+            ["U", "L", "P", "M", "V"], // fixed the way this was laid out because spelling 'blue' was previously not possible
+            ["P", "U", "R", "A", "U"]], // if you didnt know you could like.. do it in chunks instead of one big thing
+        words: ["CYAN", "YELLOW", "PURPLE", "MAUVE", "BLUE"]
     }, // i really hope this wasnt written by ai originally...
     {
         cells: [
-            ["W", "N", "O", "R", "I"],
-            ["O", "H", "N", "C", "K"],
-            ["L", "C", "K", "E", "T"],
-            ["E", "S", "J", "R", "E"],
-            ["O", "K", "S", "T", "J"]],
-        words: ["TRICK", "JOKES", "JESTER", "CLOWN", "HONK"]
+            ["E", "K", "O", "A", "P"],
+            ["A", "W", "L", "I", "R"],
+            ["N", "S", "F", "A", "T"],
+            ["L", "E", "E", "R", "A"],
+            ["A", "G", "G", "U", "J"]],
+        words: ["TAPIR", "EAGLE", "JAGUAR", "SNAKE", "WOLF"]
     },
     {
         cells: [
@@ -43,14 +49,6 @@ function make_cell_list() {
 const CELLS = make_cell_list();
 //console.log(CELLS); |||||||||||||| just had this here to like check it worked and stuff
 
-
-
-
-
-
-
-
-
 function setup_game(board) {
     for (let x = 0; x < 5; x++) {
         for (let y = 0; y < 5; y++) {
@@ -59,29 +57,30 @@ function setup_game(board) {
     }
 }
 
-function get_radio(){    
-        if (document.getElementById("board0").checked) {
+setup_game(BOARDS[0].cells);
+document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[0].words.join(", ");
 
-            setup_game(BOARDS[0].cells);
-            document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[0].words.join(", ");
-        }
-        else if (document.getElementById("board1").checked) {
+/* if (document.getElementById('board0').checked) {
 
-            setup_game(BOARDS[1].cells);
-            document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[1].words.join(", ");
-        }
-        else if (document.getElementById("board2").checked) {
-
-            setup_game(BOARDS[2].cells);
-            document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[2].words.join(", ");
-        }
+    setup_game(BOARDS[0].cells);
+    document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[0].words.join(", ");
 }
-// we are getting a divorce. i hate this function it doesnt stupid stupid stupid STUPID doesnt
-// DOESNT LOOP STUPID MORON IDIOT HATE THIS FUUNCTION
-// divorce.
+if (document.getElementById('board1').checked) {
 
-// uh anyway :3
-// haiiiii:3
+    setup_game(BOARDS[1].cells);
+    document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[1].words.join(", ");
+}
+if (document.getElementById('board2').checked) {
+
+    setup_game(BOARDS[2].cells);
+    document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[2].words.join(", ");
+}*/
+// format this better, refactor so it can be concise and then add
+// probably will use a for loop of some sort to quickly check what was selected
+// not sure how i can make it constantly check without lagging things out or causing bugs
+// for now it works for board 1 (techincally board[0]) and you would have to brute force it for other boards
+// maybe a non-radio input but i LIKE radio buttons in this context. textbox would be annoying.
+
 let selected_x = -1;
 let selected_y = -1;
 function select(x, y) {
@@ -107,15 +106,14 @@ function unselect(x, y) { // homebrewed, didnt feel like copying what was on the
 function can_move(x, y) {
     let is_next_to = Math.abs(selected_x - x) + Math.abs(selected_y - y) == 1;
     for(let z=0; z<=4; z++){
-        if(CELLS[y][x].innerHTML == BOARDS[0].words[z] || CELLS[y][x].innerHTML == BOARDS[1].words[z] || CELLS[y][x].innerHTML == BOARDS[2].words[z])
+        if(CELLS[y][x].innerHTML == BOARDS[0].words[z])
         {
             unselect(selected_x, selected_y);
             unselect(x, y);
-            is_next_to = 1;
             // console.log(CELLS[y][x].innerHTML+" cells");
             // console.log(BOARDS[0].words[z]+" boards words"); these should work so i commented out the console logging
             // but if it stops working uncomment the console logging to bugfix
-            
+            is_next_to = 1;
             // in order to prevent fusion of completed words, i made it so it unselects but it runs into an error. it works
             //but not exactly how i planned. its also fudging an is_next_to. 
             // ill fix this later maybe. but it works for now.
@@ -130,13 +128,13 @@ function move(x, y) {
     CELLS[selected_y][selected_x].innerHTML = "";
     select(x,y);
     for(let z=0; z<=4; z++){
-    if(CELLS[y][x].innerHTML == BOARDS[0].words[z] || CELLS[y][x].innerHTML == BOARDS[1].words[z] || CELLS[y][x].innerHTML == BOARDS[2].words[z])
+    if(CELLS[y][x].innerHTML == BOARDS[0].words[z])
     {
         unselect(x,y);
       //  console.log(BOARDS[0].words[0])  -----------------.
         if(points<5){              //                        |______ these console logs could be next to each other but theyre not
         points++;                 //                         /              because i feel like it
-   // console.log(points) __________________________________/    he he
+   // console.log(points) __________________________________/
 }
          if (points>=5){
             alert("you won!"); //works! as of 2:30pm on 7/23/2025
@@ -147,7 +145,7 @@ function move(x, y) {
 
 function on_click(x, y) {
     for(let z=0; z<=4; z++){
-        if(CELLS[y][x].innerHTML == BOARDS[0].words[z] || CELLS[y][x].innerHTML == BOARDS[1].words[z] || CELLS[y][x].innerHTML == BOARDS[2].words[z])
+        if(CELLS[y][x].innerHTML == BOARDS[0].words[z])
         {
             unselect(selected_x, selected_y);
             unselect(x, y);
