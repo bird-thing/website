@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0A2239;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* kept without margin 0 for h1 because it looks better imo */
+@keyframes hover {
+    0% {
+  
+        background-position-x: 0px;
+        background-image: linear-gradient(
+          45deg,
+          #0A2239 5%,
+          #1d4264 10%,
+          #41829D 30%,
+          #58a1c0 50%,
+          #80b5cc 70%,
+          #fff 80%,
+          #58a1c0 95%
+        );
+        background-size: 400px;
+      }
+    50% {
+    
+  
+      background-position-x: -200px;
+      background-image: linear-gradient(
+        45deg,
+        #0A2239 5%,
+        #1d4264 10%,
+        #41829D 30%,
+        #58a1c0 50%,
+        #80b5cc 70%,
+        #fff 80%,
+        #58a1c0 95%
+      );
+      background-size: 400px;
+    }
+    100% {
+  
+        background-position-x: 0px;
+        background-image: linear-gradient(
+          45deg,
+          #0A2239 5%,
+          #1d4264 10%,
+          #41829D 30%,
+          #58a1c0 50%,
+          #80b5cc 70%,
+          #fff 80%,
+          #58a1c0 95%
+        );
+        background-size: 400px;
+      }
+  }
+  
+
+div#cell-holder {
+    background-color: #41829D;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    aspect-ratio: 1/1;
+    width: 50%;
+    gap: 8px;
+    border: solid 8px #41829D;
+}
+
+div.cell {
+    background-color: #1D425B;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    overflow-wrap: anywhere;
+}
+
+div.cell:hover {
+    /* background-image: linear-gradient(45deg,
+     rgb(153, 153, 153)   5%,
+      rgb(255, 255, 255)  10%, rgb(204, 204, 204) 30%,
+     rgb(221, 221, 221) 50%, 
+     rgb(204, 204, 204)  70%, 
+     rgb(255, 255, 255) 80%,
+      rgb(153, 153, 153) 95%); */
+    color: #c5dde7;
+    /* animation: hover;
+    animation-iteration-count: infinite;
+    animation-duration: 10s; */
+    background-color:#0A2239;
+}
+.cell.selected{
+    border: yellow 5px solid;
+}

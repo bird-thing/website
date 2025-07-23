@@ -247,6 +247,14 @@ div#theor {
 	background-color: #0A2239;
 	padding: 10px;
 }
-p#funky {
-	transform: translateX(var(--rotation)) rotate3d(100, 20, 10, calc(var(--rotation)*2));
+.funky {
+	transform:  rotate3d(1, 2, 4, calc(var(--rotation) * 2deg * sin(2)));
 }
+/* img{
+	filter:hue-rotate(var(--rotation)); } 
+
+
+
+
+
+ */

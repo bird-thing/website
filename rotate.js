@@ -6,8 +6,8 @@ function onframe(){
    
    
    
-   document.body.style = "background-color:hsl(" + angle + "deg,100%,50%);--rotation" + angle2 + "deg";
-
+   document.body.style = "background-color:hsl(" + angle + "deg,100%,50%);--rotation:" + angle2;
+   
     requestAnimationFrame(onframe);
    
 }
