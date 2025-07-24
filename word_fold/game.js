@@ -1,7 +1,7 @@
 let points = 0; // added points because its a game and winning is cool
 // thinking about how to implement the other boards, see further comments and notes
 let fontsize = 50 // this is the size of font, it will change
-const listOfBoards = ["board0", "board1", "board2"];
+const LISTBOARDS = ["board0", "board1", "board2"];
 const BOARDS = [
     {
         cells: [
@@ -31,15 +31,7 @@ const BOARDS = [
         words: ["TRAIN", "CAR", "AIRPLANE", "BOAT", "BLIMP"] // has to add up to 25 letters
     }, // yay it works. i made this one :3
 
-    {
-        cells: [
-            ["", "", "", "", "",],
-            ["", "", "", "", "",],
-            ["", "", "", "", "",],
-            ["", "", "", "", "",],
-            ["", "", "", "", "",]],
-        words: ["", "", "", "", ""] // 
-    },
+    
     // {
     //     cells:[
     //         ["","","","","",],
@@ -51,7 +43,7 @@ const BOARDS = [
     // },
     // template
 ]
-function make_cell_list() {
+function make_cell_list() { // this makes the array but not with data for each letter yet. just empty.
     let cells = Array.from(document.getElementById("cell-holder").children) //cell yeah
     let cell_board = [];
     for (let index = 0; index < 5; index++) {
@@ -62,46 +54,23 @@ function make_cell_list() {
 }
 const CELLS = make_cell_list();
 //console.log(CELLS); |||||||||||||| just had this here to like check it worked and stuff
-
-
-
-
-
-
-
-
-
 function setup_game(board) {
     for (let x = 0; x < 5; x++) {
         for (let y = 0; y < 5; y++) {
             CELLS[y][x].innerHTML = board[y][x]
+            
         }
     }
 }
+function get_radio() { 
+   for(let i = 0; i<BOARDS.length; i++){
+    if (document.getElementById(LISTBOARDS[i]).checked) { 
 
-function get_radio() {    // see if i can make this a for loop later... problem is probably the getElementById because it wont take a list?
-    if (document.getElementById("board0").checked) { // like i make a list of strings with the boards. doesnt work when i do board_list[i] or something.
-
-        setup_game(BOARDS[0].cells);
-        document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[0].words.join(", ");
-    }
-    else if (document.getElementById("board1").checked) {
-
-        setup_game(BOARDS[1].cells);
-        document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[1].words.join(", ");
-    }
-    else if (document.getElementById("board2").checked) {
-
-        setup_game(BOARDS[2].cells);
-        document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[2].words.join(", ");
-    }
+        setup_game(BOARDS[i].cells);
+        document.getElementById("words").innerHTML = "Words to spell: " + BOARDS[i].words.join(", ");
+    }}
+   
 }
-// we are getting a divorce. i hate this function it doesnt stupid stupid stupid STUPID doesnt
-// DOESNT LOOP STUPID MORON IDIOT HATE THIS FUUNCTION
-// divorce.
-
-// uh anyway :3
-// haiiiii:3
 let selected_x = -1;
 let selected_y = -1;
 function select(x, y) {
@@ -164,8 +133,6 @@ function move(x, y) {
         }
     }
 }
-
-
 function on_click(x, y) {
     for (let z = 0; z <= 4; z++) {
         if (CELLS[y][x].innerHTML == BOARDS[0].words[z] || CELLS[y][x].innerHTML == BOARDS[1].words[z] || CELLS[y][x].innerHTML == BOARDS[2].words[z]) {
