@@ -13,9 +13,9 @@ const BOARDS = [
         cells: [
             ["E", "L", "W", "Y", "C"],
             ["Y", "L", "O", "A", "N"],
-            ["E", "B", "L", "E", "E"],
-            ["U", "L", "P", "M", "V"], // fixed the way this was laid out because spelling 'blue' was previously not possible
-            ["P", "U", "R", "A", "U"]], // if you didnt know you could like.. do it in chunks instead of one big thing
+            ["U", "B", "L", "E", "E"],
+            ["E", "L", "P", "M", "V"], 
+            ["P", "U", "R", "A", "U"]], 
         words: ["CYAN", "YELLOW", "PURPLE", "MAUVE", "BLUE"]
     }, // i really hope this wasnt written by ai originally...
     {
