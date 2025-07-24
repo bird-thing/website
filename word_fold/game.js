@@ -140,6 +140,7 @@ function move(x, y) {
 }
          if (points>=5){
             alert("you won!"); //works! as of 2:30pm on 7/23/2025
+            points = 0;
         }
     }}
 }

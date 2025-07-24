@@ -101,3 +101,21 @@ div.cell:hover {
 .cell.selected{
     border: yellow 5px solid;
 }
+#backto{
+  background-color: #1d4264;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  font-size: large;
+}
+div#side {
+	flex: 50%;
+	background-color: #41829D;
+	color: black;
+	padding: 10px;
+	box-sizing: border-box;
+  left: 0;
+  top: 0;
+  position: absolute;
+}

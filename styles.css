@@ -258,3 +258,11 @@ div#theor {
 
 
  */
+ li a{
+	color: #dbeff7;
+	text-decoration: none;
+ }
+ li a:hover{
+	animation: rainbow 5s infinite;
+	text-decoration: underline;
+ }
