@@ -107,18 +107,58 @@ class AICookApp{
 
         Make sure the recipe is practical and delicious.
         `;
+        const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${this.apiKey}`;
+        const response = await fetch(URL, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                      text: prompt  
+                    }]
+                }],
+                generationConfig: { // tells the ai how to pick the answers, temp is 0 - 1 most random to least random
+                    temperature: 0.7, 
+                    topK: 40, // topmost forty tokens
+                    topP: 0.95, // top token probability
+                    maxOutputTokens: 2048, // max output 1500 words. every token costs money and resources
+                }
+            })
+        });
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(`APIR Error: ${errorData.error?.message || 'Unknown error'}`); // its cute because i have no clue how any of this works or what it means
+        }
+        const data = await response.json();
+        return data.candidates[0].content.parts[0].text;
     }
     displayRecipe(recipe){
-
+        this.recipeContent.innerHTML = recipe;
+        this.showRecipe();
     }
     showError(message){
-
+        alert(message);
     }
     showLoading(isLoading){
-
+        if(isLoading){
+            this.loading.classList.add('show');
+            this.generateBtn.disabled = true;
+            this.generateBtn.textContent = 'Generating...'
+        }
+        else{
+            this.loading.classList.remove('show');
+            this.generateBtn.disabled = false;
+            this.generateBtn.textContent = 'Generate Recipe'
+        }
+    }
+    showRecipe(){
+        this.recipeSection.classList.add('show');
+        this.recipeSection.scrollIntoView({behavior: 'smooth'});
     }
     hideRecipe(){
-
+        this.recipeSection.classList.remove('show');
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
