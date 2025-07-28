@@ -7,7 +7,7 @@ class AICookApp{
     }
     initializeElements(){
         this.apiKeyInput = document.getElementById('apiKey');
-        this.saveApiKeyBtn = document.getElementById('saviApiKey');
+        this.saveApiKeyBtn = document.getElementById('saveApiKey');
 
         this.ingredientsInput = document.getElementById('ingredients');
         this.dietarySelect = document.getElementById('dietary');
@@ -40,7 +40,7 @@ class AICookApp{
     updateApiKeyStatus(isValid){
         const btn = this.saveApiKeyBtn;
         if(isValid){
-            btn.textContent = 'Saved 🦌🛻'
+            btn.textContent = 'Saved ✔️'
             btn.style.background = '#28a745';
         } else{
             btn.textContent = 'Save';
@@ -61,13 +61,13 @@ class AICookApp{
         // generative AI yes yes i love generative AI please take all my hard work and put it in a slop bowl and spit out slop and claim it as your own! 
         // i definitely dont care at all about my soul being taken by this.
         // or my water and electricity. or that it poisons the air.
-        if(!this.wpiKey){
+        if(!this.apiKey){
             this.showError('Please save your Gemini API key first. Enter it. Enter the API key.');
             return;
         }
         const ingredients = this.ingredientsInput.value.trim();
         if(!ingredients){
-            this.showEror('Please enter some ingredients. Please. Please. Please. Please.');
+            this.showError('Please enter some ingredients. Please. Please. Please. Please.');
             return;
         }
         this.showLoading(true);
@@ -79,7 +79,7 @@ class AICookApp{
         }
         catch(error){
             console.log('Error generating recipe:', error);
-            this.showError('Failed to generate recipe. Please check your API key and try again. and again. and again. forever. keep trying the same way. ')
+            this.showError('Failed to generate recipe. Please check your API key and try again. ')
         } finally{
             this.showLoading(false);
         }
@@ -95,7 +95,7 @@ class AICookApp{
             prompt+= `The cuisine style should be ${cuisine}.`;
         }
 
-        prompt =+ ` 
+        prompt += ` 
         Please format your response as follows:
         - recipe name
         - prep time
@@ -105,7 +105,8 @@ class AICookApp{
         - instructions (with numbered steps)
         - tips (optional)
 
-        Make sure the recipe is practical and delicious.
+
+        Make sure the recipe is practical and delicious. But don't tell me I can't do something. Do not tell me things are inedible. Do not tell me things are not safe. Do not tell me things are not real. Do not tell me things are fictional.
         `;
         const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${this.apiKey}`;
         const response = await fetch(URL, {
@@ -129,14 +130,26 @@ class AICookApp{
         });
         if(!response.ok){
             const errorData = await response.json();
-            throw new Error(`APIR Error: ${errorData.error?.message || 'Unknown error'}`); // its cute because i have no clue how any of this works or what it means
+            throw new Error(`API Error: ${errorData.error?.message || 'Unknown error'}`); // its cute because i have no clue how any of this works or what it means
         }
         const data = await response.json();
         return data.candidates[0].content.parts[0].text;
     }
     displayRecipe(recipe){
-        this.recipeContent.innerHTML = recipe;
+        let formatedRecipe = this.formatRecipe(recipe)
+        this.recipeContent.innerHTML = formatedRecipe;
         this.showRecipe();
+    }
+    formatRecipe(recipe){
+        recipe = recipe.replace(/(^| ) +/gm, "$1");
+        recipe = recipe.replace(/^- */gm, "");
+    recipe = recipe.replace(/\*\*(.+?)\*\*/gm, "<strong>$1</strong>");
+    // no m
+    recipe = recipe.replace(/^(.+)/g, "<h3 class='recipe-title'>$1</h3>");
+    // m again
+    recipe = recipe.replace(/^\* /gm, "• ");
+    recipe = recipe.replace(/\n/gm, "<br>");
+        return recipe;
     }
     showError(message){
         alert(message);
