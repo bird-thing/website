@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <title>exoplanet project stuff</title>
+        <script src="radiusCalc.js" defer></script>
+    </head>
+    <body>
+        <h1>exoplanet light curve data to exoplanet radius</h1>
+        <p>rough draft for a larger project, will eventually use this to actually MODEL the exoplanet orbit
+            around its star. this just does the math. basically depth = planet radius / star radius squared.<br>
+            except i did it like planet radius = star radius * sqrt(depth) so its easier to program. should be about the same
+            except theres a weird problem where the output data is slightly different than online sources, despite the example data from HAT-P-2b
+            coming out to the correct thing according to the source. so im thinking it isnt my program but maybe inconsistent data?
+            the main site i would use for this isnt loading currently (2:18PM 7/29/2025). so im just trusting what i see on the internet.
+            but it does come out with a number gotten from doing math with other numbers so that is good!<br>
+            solar radii is the size of a star compared to our sun, planet radius comes out in terms of the planet radius compared to jupiter.<br>
+            i might do this another way but it seems to be the generally accepted way.<br>
+            i might also be reading graphs wrong since no one puts the stupid difference between the top and bottom of the curve.
+            or... theres more to it? but what i read was just based on depth, not time. weird stuff.
+        </p>
+        <label for="solarRadii">solar radii of star:</label>
+        <input type="text" id="solarRadii">
+        <label for="depth">depth of light curve:</label>
+        <input type="text" id="depth">
+        <button onclick="doMath()">do math</button>
+        <p>planet radius:</p>
+        <p id="planetRadius"></p>
+        <p>sources: <a href="https://astro.unl.edu/newRTs/Transits/background/Transit1.html#:~:text=Specifically%2C%20the%20transit%20depth%20is%20equal%20to%20the,light%2C%20but%20there%20is%20more%20total%20light%20produced.">source 1</a>
+        <a href="https://avanderburg.github.io/tutorial/tutorial2.html">source 2</a> to be properly formatted later</p>
+        <p>next to do is getting orbit times and stuff. star size is already here. in the model have the base data be the sun and jupiter to fit
+            the math. determine the sphere radii by the real data about our solar system or some math stuff but less likely to be math stuff.
+            hard data would be better. also orbit radius would be good to have. theres a lot of variables. it seems to get both
+            more and less complicated every time i work on this. for now, we have a math thing to do radius of the exoplanet. yeah.<br>
+            now i need to ask my classmate whats going on because i was working on this instead of doing the AI storytelling program thing. oops.
+        </p>
+    </body>
+</html>
