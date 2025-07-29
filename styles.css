@@ -266,3 +266,11 @@ div#theor {
 	animation: rainbow 5s infinite;
 	text-decoration: underline;
  }
+ div.frames{
+	background-color:#0A2239;
+	padding: 2.5px;
+ }
+ div.frames img{
+	border: solid white 2px;
+	margin: 5px;
+ }
