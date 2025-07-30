@@ -91,7 +91,7 @@ function init(){
         };
         View.getLanguageSelect().addEventListener("change", handleLanguageChange)
 
-        View.getStopSpeakBtn.onclick = handleStopSpeaking;
+        View.getStopSpeakButton().onclick = handleStopSpeaking;
         View.getPauseSpeakButton().onclick = handlePauseResume;
 }
 // if i ever unironically say i like generative AI, that is not me.

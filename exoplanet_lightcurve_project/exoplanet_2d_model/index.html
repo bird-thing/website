@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>2d model of exoplanet light curve stuff</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body><h1>exoplanet light curve data to exoplanet radius 2d model</h1>
+        <p>rough draft for a larger project, will eventually get distance and orbit.<br>
+           <br>
+            solar radii is the size of a star compared to our sun, planet radius comes out in terms of the planet radius compared to jupiter.<br>
+        </p>
+    <main>
+       <label for="solarRadii">solar radii of star:</label>
+        <input type="text" id="solarRadii">
+        <label for="depth">depth of light curve:</label>
+        <input type="text" id="depth">
+        <button onclick="doMath()">do math</button>
+        <p>planet radius:</p>
+        <p id="planetRadius"></p>
+      <p>sources: <a href="https://astro.unl.edu/newRTs/Transits/background/Transit1.html#:~:text=Specifically%2C%20the%20transit%20depth%20is%20equal%20to%20the,light%2C%20but%20there%20is%20more%20total%20light%20produced.">source 1</a>
+        <a href="https://avanderburg.github.io/tutorial/tutorial2.html">source 2</a> to be properly formatted later</p>
+        <p>next to do is getting orbit times and stuff.
+        </p>
+    </main>
+    <script src="sketch.js"></script>
+  </body>
+</html>
