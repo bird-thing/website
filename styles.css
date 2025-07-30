@@ -274,3 +274,11 @@ div#theor {
 	border: solid white 2px;
 	margin: 5px;
  }
+ .sphere{
+	background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+	width: 400px;
+	height: 400px;
+ }
