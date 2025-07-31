@@ -1,6 +1,5 @@
-let notes = "notes: ";
+let notes = "notes played: ";
 let audioContext = new window.AudioContext();
-let audioContext2 = new window.AudioContext();
 let x;
 
 
