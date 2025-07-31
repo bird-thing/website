@@ -49,7 +49,7 @@ function draw_paddle(ctx, paddle) {
 export function speak_reset() {
     const resetPhrases = [
         "Game reset",
-        "New game starting",
+        "New game",
         "Game restarted",
         "Ready for a new match",
         "oh god... not this again"
@@ -114,7 +114,7 @@ export function speak_win(name, opponent_name) {
         `This isn't a competition but if it was... ${name} would have won`,
         `i guess ${name} won`,
         `${name} is less bad at this than ${opponent_name}!`,
-        `wow. somehow ${name} wpn. no one thought that would happen.`,
+        `wow. somehow ${name} won.... no one thought that would happen.`,
         `${name} takes the victory`,
         `${name} will recieve an egg and an egg and an egg and an egg for winning and an egg and DRIVING IN MY CAR`,
         `${name} dominates the match`
@@ -144,7 +144,7 @@ function speak(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = gameVoice;      // Use selected voice
     utterance.rate = speed;             // Speak faster for responsiveness
-    utterance.pitch = Math.random()*10000-Math.random()*10000;            // random pitch
+    utterance.pitch = Math.random()*1000000-Math.random()*1000000;            // random pitch
     utterance.volume = 0.8;           // 80% volume
 
     // Speak the announcement
