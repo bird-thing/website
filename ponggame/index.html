@@ -7,16 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pog</title>
     <link rel="stylesheet" href="pong.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <script type="module" src="pong.js"></script>
+
 </head>
 
 <body>
     <h1>snarky pong game</h1>
-    <h3>its snarky</h3>
-    <canvas id="gameboard" width="800" height="800"></canvas>
+      <div class="window" style="width:775px; margin-left: auto; margin-right: auto;">
+        <div class="title-bar">
+            <div class="title-bar-text">pong but snarky</div>
+            </div>
+            <div class="window-body">
+    <canvas id="gameboard" width="750" height="700"></canvas></div></div>
     <div id="scoreboard">0 : 0</div>
     <button id="reset">RESET</button>
-    <br />
+ 
+    <br><br>
     <div>
         <span>
             <label for="nameL">Left Player Name:</label>

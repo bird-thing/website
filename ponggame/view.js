@@ -48,12 +48,11 @@ function draw_paddle(ctx, paddle) {
 
 export function speak_reset() {
     const resetPhrases = [
-        "Game reset, let's play again",
+        "Game reset",
         "New game starting",
         "Game restarted",
         "Ready for a new match",
-        "oh god... not this again",
-        "this doesnt actually reset the score?"
+        "oh god... not this again"
     ];
     speak_one_of(resetPhrases);
 }

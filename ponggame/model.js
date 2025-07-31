@@ -1,11 +1,12 @@
 import Ball from "./ball.js";
 import Paddle from "./paddle.js";
+import { updateScore } from "./view.js";
 
 export const SIDE = { NONE: 0, LEFT: 1, RIGHT: 2 };
 export const STATE = { STARTUP: 0, PLAYING: 1, GAMEOVER: 2 };
 
-export const BOARD_WIDTH = 800;
-export const BOARD_HEIGHT = 800;
+export const BOARD_WIDTH = 750;
+export const BOARD_HEIGHT = 700;
 export const PADDLE_WIDTH = 25;
 export const PADDLE_HEIGHT = 100;
 export const BALL_RADIUS = 12.5;
@@ -27,10 +28,12 @@ export class Model {
     constructor() {
         this.resetGame();
     }
-
     resetGame() {
         this.state = STATE.STARTUP;
         clearTimeout(this.intervalID);
+        this.scoreL = 0;
+        this.scoreR = 0;
+        updateScore(this)
         this.resetBall();
         this.paddleL = new Paddle(0, 0, PADDLE_WIDTH, PADDLE_HEIGHT, SIDE.LEFT, "white");
         this.paddleR = new Paddle(BOARD_WIDTH - PADDLE_WIDTH, 0, PADDLE_WIDTH, PADDLE_HEIGHT, SIDE.RIGHT, "white");
