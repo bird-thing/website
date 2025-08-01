@@ -37,7 +37,7 @@ export class Model {
         this.resetBall();
         this.paddleL = new Paddle(0, 0, PADDLE_WIDTH, PADDLE_HEIGHT, SIDE.LEFT, "white");
         this.paddleR = new Paddle(BOARD_WIDTH - PADDLE_WIDTH, 0, PADDLE_WIDTH, PADDLE_HEIGHT, SIDE.RIGHT, "white");
-    } // figure out how to get the scores to actually reset
+    } // figured out how to get the scores to actually reset
 
     resetBall() {
         let velx = Math.floor(Math.random() * 2) * 2 - 1;
